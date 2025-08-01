@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For My Kartavya</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      width: 300%;
+      height: 100vh;
+      transition: transform 1s ease-in-out;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: black;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .slide img, .slide video {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff66b2;
+    }
+
+    .nav {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 10;
+    }
+
+    .nav button {
+      padding: 10px 20px;
+      background: #ff66b2;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 100;
+      padding: 10px 15px;
+      background: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .voice-note-btn {
+      position: absolute;
+      bottom: 60px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border: 2px solid #ff66b2;
+      border-radius: 15px;
+      color: #ff66b2;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Music Play Button -->
+  <button class="play-btn" onclick="document.getElementById('bgmusic').play()">▶️ Play Music</button>
+
+  <!-- Slider -->
+  <div id="slider" class="slider">
+    <!-- Slide 1 -->
+    <div class="slide">
+      <img src="20250801_142633.jpg" alt="Slide 1" />
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <video src="slide_card.mp4" controls autoplay muted loop></video>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <img src="20250801_143744.jpg" alt="Slide 3" />
+      <button class="voice-note-btn" onclick="document.getElementById('voicenote').play()">💌 Play Voice Note</button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <button onclick="goToSlide(0)">1</button>
+    <button onclick="goToSlide(1)">2</button>
+    <button onclick="goToSlide(2)">3</button>
+  </div>
+
+  <!-- Audio Files -->
+  <audio id="bgmusic" src="cupid.mp3" loop></audio>
+  <audio id="voicenote" src="i_love_you.mp3"></audio>
+
+  <!-- Script -->
+  <script>
+    let slider = document.getElementById('slider');
+    function goToSlide(n) {
+      slider.style.transform = `translateX(-${n * 100}vw)`;
+    }
+  </script>
+
+</body>
+      </html>
